@@ -1,6 +1,7 @@
 <h1>All the people</h1>
+<%= link_to "Create New", new_person_path %>
 <% @people.each do |person| %>
-  <h1><%= person.name %></h1>
+  <h1><%= link_to person.name, person_path(person) %></h1>
 <% end %>
 
-<%= link_to "About", "/about" %>
+
