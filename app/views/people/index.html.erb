@@ -1,7 +1,22 @@
 <h1>All the people</h1>
+
+<div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <label class="input-group-text"for="inputGroupSelect01">Category</label>
+      <%= collection_select(:people, :name, Person.all, :name, :name, {}) %>
+    </div>
+  </div>
+
 <%= link_to "Create New", new_person_path %>
-<% @people.each do |person| %>
-  <h1><%= link_to person.name, person_path(person) %></h1>
-<% end %>
+<% if !@filter.nil? %>    
+  <% @filter.each do |person| %>
+    <h1><%= link_to person.name, person_path(person) %></h1>
+  <% end %><% end %>
+
+<% if @filter.nil? %>       
+  <% @people.each do |person| %>
+    <h1><%= link_to person.name, person_path(person) %></h1>
+  <% end %><% end %>
+
 
 

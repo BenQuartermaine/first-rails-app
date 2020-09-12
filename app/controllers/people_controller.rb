@@ -1,7 +1,8 @@
 class PeopleController < ApplicationController
   before_action :find_person, only: [:edit, :show, :update, :destroy]
   def index
-    @people = Person.all
+    @people = Person.where(nil)
+    @filter = @people.filter_by_name(params[:name]) if params[:name].present?
   end
   
   def create
@@ -31,7 +32,7 @@ class PeopleController < ApplicationController
   private
 
   def person_params
-    params.require(:person).permit(:name, :age, :family_member, :pets)
+    params.require(:person).permit(:name, :age)
   end
 
   def find_person 
