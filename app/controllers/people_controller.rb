@@ -29,6 +29,13 @@ class PeopleController < ApplicationController
     redirect_to people_path
   end
 
+  def above 
+    @people = Person.where("age > 28")
+  end
+  def below 
+    @people = Person.where("age <= 28")
+  end
+
   private
 
   def person_params

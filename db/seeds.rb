@@ -5,13 +5,16 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+puts "Cleaning DB"
+Person.delete_all
+puts "DB is clean"
 
-puts "creating 100 times"
+puts "Creating People"
 100.times do
-  newP = Person.new(
+  person = Person.create(
     name: Faker::FunnyName.two_word_name,
     age: rand(1..80),
-  ).save
-  puts newP
+  )
+  puts "Person #{person.id} was created"
 end
-puts "done"
+puts "Seed complete"

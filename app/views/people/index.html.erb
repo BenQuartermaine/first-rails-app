@@ -7,7 +7,10 @@
     </div>
   </div>
 
-<%= link_to "Create New", new_person_path %>
+  <%= link_to 'Elderly', above_people_path, class: "btn btn-primary" %>
+  <%= link_to 'Youth', below_people_path, class: "btn btn-secondary" %>
+  <%= link_to "Create New", new_person_path, class: "btn btn-light" %>
+
 <% if !@filter.nil? %>    
   <% @filter.each do |person| %>
     <h1><%= link_to person.name, person_path(person) %></h1>
