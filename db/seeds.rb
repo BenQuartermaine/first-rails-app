@@ -14,6 +14,7 @@ puts "Creating People"
   person = Person.create(
     name: Faker::FunnyName.two_word_name,
     age: rand(1..80),
+    review: ['Very good', 'meteorite', 'into it'].sample
   )
   puts "Person #{person.id} was created"
 end
