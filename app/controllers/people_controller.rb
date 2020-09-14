@@ -1,5 +1,5 @@
 class PeopleController < ApplicationController
-  before_action :find_person, only: [:edit, :show, :update, :destroy]
+  before_action :find_person, only: [:edit, :show, :update, :destroy, :review]
   def index
     @people = Person.where(nil)
     @filter = @people.filter_by_name(params[:name]) if params[:name].present?
@@ -32,8 +32,13 @@ class PeopleController < ApplicationController
   def above 
     @people = Person.where("age > 28")
   end
+
   def below 
     @people = Person.where("age <= 28")
+  end
+
+  def review
+    @review = @person.review
   end
 
   private

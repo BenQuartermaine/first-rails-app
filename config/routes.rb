@@ -7,5 +7,9 @@ Rails.application.routes.draw do
       get :above
       get :below
     end
+
+    member do
+      get :review
+    end
   end
 end
